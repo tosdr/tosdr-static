@@ -34,6 +34,10 @@ export default {
         component: 'src/containers/About',
       },
       {
+        path: '/downloads',
+        component: 'src/containers/Downloads',
+      },
+      {
         path: '/service',
         component: 'src/containers/ServiceOverview',
         getData: () => ({

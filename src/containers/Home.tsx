@@ -65,7 +65,7 @@ export default withSiteData(withRouteData(({ services, blog }: Props) => (
 
 function renderBlog(blog: Feed): React.ReactNode {
   const posts = blog.items.slice(0, 3).map((post) => (
-    <li className="media">
+    <li key={post.guid} className="media">
       <div className="media-content">
         <p className="title is-size-5">
           <a

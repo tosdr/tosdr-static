@@ -46,17 +46,15 @@ function renderMetadata(service: Service): React.ReactNodeArray {
 
   if (service.domains) {
     service.domains.forEach((domain) => {
-      const url = new URL(`http://${domain}`);
-
       metadata.push((
-        <div className="level-item">
+        <div key={domain} className="level-item">
           <a 
             href={`http://${domain}`}
-            title={`Visit ${url.hostname}`}
+            title={`Visit ${domain}`}
             target="_blank"
             className="button is-text"
           >
-            {url.hostname}
+            {domain}
           </a>
         </div>
       ));
@@ -70,6 +68,7 @@ function renderDocs(service: Service): React.ReactNode {
   const linksToDocs = Object.keys(service.docs).map((filename) => {
     return (
       <Link
+        key={filename}
         to={`/service/${service.id}/#${slug(filename)}`}
         title={`View ${filename} for ${service.name}`}
         className="level-item button is-text"

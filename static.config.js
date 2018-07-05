@@ -3,6 +3,8 @@ import path from 'path'
 import fs from 'fs';
 import util from 'util';
 
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 // Paths Aliases defined through tsconfig.json
 const typescriptWebpackPaths = require('./webpack.config.js')
 
@@ -64,6 +66,11 @@ export default {
     // Add TypeScript Path Mappings (from tsconfig via webpack.config.js)
     // to react-statics alias resolution
     config.resolve.alias = typescriptWebpackPaths.resolve.alias
+
+    // Added manually; I'd hoped that React Static would do this themselves,
+    // but I got an error that the plugin wasn't added, so I added this.
+    // Hopefully it can be removed with a new version of React Static.
+    config.plugins.push(new ExtractTextPlugin('styles.css'))
 
     // We replace the existing JS rule with one, that allows us to use
     // both TypeScript and JavaScript interchangeably

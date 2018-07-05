@@ -1,20 +1,37 @@
-# React-Static - TypeScript Enabled Example
+This is a static site that is generated based on the ToS;dr API.
 
-This example includes:
-- TypeScript & Loader Configuration (full support)
-- Source-Maps for everything (in dev)
-- TypeScript paths alias mapping as a standard `webpack.config.js` used 
-within react-static's build system (see tsconfig.json` paths & 
-src/path-alias-example)
-- TypeScript hot module replacement
-- Simultaneous support of **using JavaScript and TypeScript interchangeably**
-- Types for all modules (except react-static's costume methods — will be 
-added later)
-- Styled-Components
-- Image imports
-- File imports
-- Automatic Routing
+## Motivation
 
+- API as the single source of truth
+- Practically no risk of downtime due to being a static site
+- Integrate the blog into the main site (latest posts are incorporated at build time - after a new blog post, the site can be regenerated with a webhook)
+- Single command to build the site
+- Proper URLs for navigation (though we should probably look at making sure that the links of the old site still work)
+- High performance
 
-To get started, run `react-static create` and use the `typescript` 
-template.
+The site is built using [React Static](https://react-static.js.org/).
+
+## Running
+
+All commands should be run in the top level of this repo. We're assuming [Yarn](https://yarnpkg.com/) is installed, and all dependencies are installed by running `yarn` in the top-level directory.
+
+### In development mode
+
+```bash
+$ yarn start
+```
+
+### Testing the production build
+
+```bash
+$ yarn stage
+$ yarn serve
+```
+
+### Building for production
+
+This is usually done in CI, but for reference:
+
+```bash
+$ yarn build
+```

@@ -10,6 +10,8 @@ const typescriptWebpackPaths = require('./webpack.config.js')
 
 export default {
   entry: path.join(__dirname, 'src', 'index.tsx'),
+  stagingSiteRoot: 'https://vinnl.gitlab.io/',
+  stagingBasePath: 'tosdr-static',
   getSiteData: () => ({
     title: 'Terms of Service; Didn\'t Read',
   }),

@@ -1,8 +1,8 @@
 # dependencies
 /node_modules
 
-# API data
-/data
+# Old API data (v2 currently just exists of mock data, so leave that in)
+/data/v1
 
 # testing
 /coverage

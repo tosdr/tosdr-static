@@ -16,9 +16,9 @@ export default {
     const readFile = util.promisify(fs.readFile);
     // Note: we're assuming data/services to contain the API data, i.e. from here:
     // https://github.com/tosdr/tosdr.org/tree/master/api/1/service/
-    const filenames = await readdir(path.resolve(__dirname, './data/services'));
+    const filenames = await readdir(path.resolve(__dirname, './data/v2/service'));
     const jsonFilenames = filenames.filter(filename => filename.substr(-5) === '.json');
-    const files = await Promise.all(jsonFilenames.map(fileName => readFile(path.resolve(__dirname, './data/services', fileName), 'utf8')));
+    const files = await Promise.all(jsonFilenames.map(fileName => readFile(path.resolve(__dirname, './data/v2/service', fileName), 'utf8')));
     const services = files.map(file => JSON.parse(file));
 
     return [

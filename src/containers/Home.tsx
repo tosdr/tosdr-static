@@ -35,6 +35,7 @@ export default withSiteData(withRouteData(({ services }: Props) => (
     </section>
     <section className="section">
       <div className="container">
+        <h2 className="title">Rated services</h2>
         <ServiceList services={services}/>
       </div>
     </section>

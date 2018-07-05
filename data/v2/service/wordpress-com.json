@@ -1,0 +1,28 @@
+{
+  "id": 173,
+  "alexa": 56,
+  "domains": [ "wordpress.com" ],
+  "name": "WordPress.com",
+  "logo": "/logo/wordpress-com.png",
+  "wikipedia": "https://en.wikipedia.org/wiki/WordPress.com",
+  "twitter": "@wordpressdotcom",
+  "docs": {
+    "Terms of Service": {
+      "topRev": "8754c42a94047cf2ab20e44eb0972adb6d259848",
+      "url": "http://en.wordpress.com/tos/",
+      "xPath": "//div[@class='pagebody']",
+      "points": [
+        {
+          "quoteStart": 345,
+          "quoteEnd": 6578,
+          "quoteText": "You hereby grant an irrevocable, non-transferable license to your data.",
+          "caseId": 123,
+          "caseTitle": "Irrevocable, non-transferable license",
+          "caseClassification": "bad",
+          "caseWeight": 30
+        }
+      ]
+    }
+  },
+  "class": "B"
+}

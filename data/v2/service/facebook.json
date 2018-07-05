@@ -1,0 +1,51 @@
+{
+  "id": 182,
+  "domains": [ "facebook.com" ],
+  "name": "Facebook",
+  "logo": "/logo/facebook.png",
+  "wikipedia": "https://en.wikipedia.org/wiki/Facebook",
+  "docs": {
+    "Terms of Service.txt": {
+      "topRev": "6b24b75701c0de33f5d3274a94abd732b55d6ad4",
+      "url": "https://www.facebook.com/legal/terms",
+      "xPath": "//div[@class='pagebody']",
+      "points": [
+        {
+          "quoteStart": 345,
+          "quoteEnd": 6578,
+          "quoteText": "You hereby grant an irrevocable, non-transferable license to your data.",
+          "caseId": 123,
+          "caseTitle": "Irrevocable, non-transferable license",
+          "caseClassification": "bad",
+          "caseWeight": 30
+        },
+        {
+          "quoteStart": 345,
+          "quoteEnd": 6578,
+          "quoteText": "These mock terms do not provide you with any rights whatsoever.",
+          "caseId": 123,
+          "caseTitle": "No rights at all.",
+          "caseClassification": "bad",
+          "caseWeight": 30
+        }
+      ]
+    },
+    "Privacy Policy.txt": {
+      "topRev": "6b24b75701c0de33f5d3274a94abd732b55d6ad4",
+      "url": "https://www.facebook.com/legal/privacy",
+      "xPath": "//div[@class='pagebody']",
+      "points": [
+        {
+          "quoteStart": 345,
+          "quoteEnd": 6578,
+          "quoteText": "These mock terms do not provide you with any rights whatsoever.",
+          "caseId": 123,
+          "caseTitle": "No rights at all.",
+          "caseClassification": "bad",
+          "caseWeight": 30
+        }
+      ]
+    }
+  },
+  "class": "C"
+}

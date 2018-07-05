@@ -1,0 +1,13 @@
+.tag.is-good {
+  background-color: #007e00;
+  color: #EEE;
+}
+
+.tag.is-bad{
+  background-color: #f89406;
+  color: #414141;
+}
+
+.tag.is-blocker{
+  background-color: #C43C35;
+}

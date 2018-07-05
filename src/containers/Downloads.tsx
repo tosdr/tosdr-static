@@ -2,9 +2,15 @@ import React from 'react'
 
 export default () => (
   <div>
+    <header className="hero is-light">
+      <div className="hero-body">
+        <div className="container">
+          <h2 className="title">Browser extensions</h2>
+        </div>
+      </div>
+    </header>
     <section className="section">
       <div className="container">
-        <h2 className="title">Browser extensions</h2>
         <div className="media">
           <div className="media-content">
             <h3 className="title">Firefox</h3>

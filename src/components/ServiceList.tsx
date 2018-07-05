@@ -10,7 +10,7 @@ interface Props {
 export class ServiceList extends React.Component<Props> {
   public render() {
     return (
-      <ul>
+      <ul className="is-marginless">
         {this.props.services.map(service => (
           <li key={service.id} className="media">
             <div className="media-content">

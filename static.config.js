@@ -2,6 +2,7 @@ import axios from 'axios'
 import path from 'path'
 import fs from 'fs';
 import util from 'util';
+import Parser from 'rss-parser';
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -29,9 +30,15 @@ export default {
       {
         path: '/',
         component: 'src/containers/Home',
-        getData: () => ({
-          services,
-        }),
+        getData: async () => {
+          const parser = new Parser();
+          const feed = await parser.parseURL('https://blog.tosdr.org/rss/');
+
+          return {
+            services,
+            blog: feed,
+          };
+        },
       },
       {
         path: '/about',

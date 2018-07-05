@@ -6,11 +6,29 @@ import { Service } from '../types';
 import { ServiceList } from '../components/ServiceList';
 import { DownloadButton } from '../components/DownloadButton';
 
+interface Feed {
+  feedUrl: string;
+  title: string;
+  description: string;
+  link: string;
+  items: Array<{
+    title: string;
+    link: string;
+    pubDate: string;
+    creator: string;
+    content: string;
+    contentSnippet: string;
+    guid: string;
+    categories: string[];
+    isoDate: string;
+  }>;
+}
 interface Props {
-  services: Service[]
+  services: Service[];
+  blog: Feed;
 }
 
-export default withSiteData(withRouteData(({ services }: Props) => (
+export default withSiteData(withRouteData(({ services, blog }: Props) => (
   <div>
     <section className="hero is-light">
       <div className="hero-body">
@@ -34,6 +52,9 @@ export default withSiteData(withRouteData(({ services }: Props) => (
       </div>
     </section>
     <section className="section">
+      <div className="container">{renderBlog(blog)}</div>
+    </section>
+    <section className="section">
       <div className="container">
         <h2 className="title">Rated services</h2>
         <ServiceList services={services}/>
@@ -41,3 +62,28 @@ export default withSiteData(withRouteData(({ services }: Props) => (
     </section>
   </div>
 )))
+
+function renderBlog(blog: Feed): React.ReactNode {
+  const posts = blog.items.slice(0, 3).map((post) => (
+    <li className="media">
+      <div className="media-content">
+        <p className="title is-size-5">
+          <a
+            href={post.link}
+            title={`View ${post.title}`}
+            // className="title is-size-4"
+          >{post.title}</a>
+        </p>
+        <p className="content" dangerouslySetInnerHTML={{ __html: post.contentSnippet }}/>
+      </div>
+    </li>
+  ));
+
+  return (
+    <div>
+      <h2 className="title">Blog</h2>
+      <ul className="is-marginless">{posts}</ul>
+      <p><a href="https://blog.tosdr.org/" title="View the full blog">More</a></p>
+    </div>
+  );
+}

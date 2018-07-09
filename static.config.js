@@ -45,8 +45,16 @@ export default {
         component: 'src/containers/About',
       },
       {
+        path: '/get-involved',
+        component: 'src/containers/GetInvolved',
+      },
+      {
         path: '/downloads',
         component: 'src/containers/Downloads',
+      },
+      {
+        path: '/api',
+        component: 'src/containers/Api',
       },
       {
         path: '/service',

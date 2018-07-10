@@ -2,6 +2,7 @@ import React from 'react'
 import { Router, Link } from 'react-static'
 import { hot } from 'react-hot-loader'
 import Routes from 'react-static-routes'
+import { Helmet } from 'react-helmet';
 
 import '../node_modules/bulma/css/bulma.min.css';
 import icon from './icon.png'
@@ -9,6 +10,9 @@ import icon from './icon.png'
 const App = () => (
   <Router>
     <div>
+      <Helmet>
+        <link rel="icon" type="image/png" href={icon}/>
+      </Helmet>
       <header className="container">
         <nav className="navbar" role="navigation" aria-label="Main navigation">
           <div className="navbar-brand has-text-weight-bold">
@@ -55,16 +59,16 @@ const App = () => (
                 Home
               </Link>
               <hr/>
-              <p>
+              <div>
                 <ul>
                   <li><a href="mailto:teSPAMam@tosREMOVEdr.org" title="Send us an email">Email the team</a></li>
                   <li><Link to="/downloads" title="Download our browser extension">Browser extensions</Link></li>
                 </ul>
-              </p>
+              </div>
             </div>
             <div className="column">
               <h2 className="title is-size-5">Contribute</h2>
-              <p>
+              <div>
                 <ul>
                   <li>
                     <a
@@ -89,11 +93,11 @@ const App = () => (
                     </Link>
                   </li>
                 </ul>
-              </p>
+              </div>
             </div>
             <div className="column">
               <h2 className="title is-size-5">Spread the word</h2>
-              <p>
+              <div>
                 <ul>
                   <li>
                     <a
@@ -128,7 +132,7 @@ const App = () => (
                     </a>
                   </li>
                 </ul>
-              </p>
+              </div>
             </div>
           </div>
           <hr/>

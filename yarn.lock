@@ -122,7 +122,7 @@
     "@types/node" "*"
     "@types/react" "*"
 
-"@types/react-helmet@^5.0.3":
+"@types/react-helmet@^5.0.3", "@types/react-helmet@^5.0.6":
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.6.tgz#49607cbb72e1bb7dcefa9174cb591434d3b6f0af"
   dependencies:

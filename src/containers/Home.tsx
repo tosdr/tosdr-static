@@ -1,5 +1,6 @@
 import React from 'react'
 import { withSiteData, withRouteData } from 'react-static'
+import Helmet from 'react-helmet';
 
 import logoImg from '../logo.png'
 import { Service } from '../types';
@@ -35,6 +36,11 @@ export default withSiteData(withRouteData(({ services, blog }: Props) => (
         <div className="container">
           <div className="level">
             <div className="level-item has-text-centered">
+              <Helmet>
+                <title>
+                  Terms of Service; Didn't Read
+                </title>
+              </Helmet>
               <img src={logoImg} alt="" style={{ maxWidth: '500px' }} />
             </div>
             <div className="level-item has-text-centered">

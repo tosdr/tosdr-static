@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouteData } from 'react-static'
 import slug from 'slug';
+import Helmet from 'react-helmet';
 
 import { Service, Quote, Documents } from '../types'
 import { ServiceSummary } from '../components/ServiceSummary';
@@ -15,6 +16,11 @@ export default withRouteData(({ service }: Props) => (
     <header className="hero is-light">
       <div className="hero-body">
         <div className="container">
+          <Helmet>
+            <title>
+              {service.name} · Terms of Service; Didn't Read
+            </title>
+          </Helmet>
           <ServiceSummary service={service} detailed={true}/>
         </div>
       </div>

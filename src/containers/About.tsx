@@ -1,10 +1,16 @@
 import React from 'react'
+import { Helmet } from 'react-helmet';
 
 export default () => (
   <div>
     <header className="hero is-light">
       <div className="hero-body">
         <div className="container">
+          <Helmet>
+            <title>
+              About · Terms of Service; Didn't Read
+            </title>
+          </Helmet>
           <h2 className="title">About</h2>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { withSiteData, withRouteData } from 'react-static'
 import Helmet from 'react-helmet';
 
 import logoImg from '../logo.png'
-import { Service } from '../types';
+import { Reviews } from '../types';
 import { ServiceList } from '../components/ServiceList';
 import { DownloadButton } from '../components/DownloadButton';
 
@@ -25,11 +25,11 @@ interface Feed {
   }>;
 }
 interface Props {
-  services: Service[];
+  reviews: Reviews;
   blog: Feed;
 }
 
-export default withSiteData(withRouteData(({ services, blog }: Props) => (
+export default withSiteData(withRouteData(({ reviews, blog }: Props) => (
   <div>
     <section className="hero is-light">
       <div className="hero-body">
@@ -63,7 +63,7 @@ export default withSiteData(withRouteData(({ services, blog }: Props) => (
     <section className="section">
       <div className="container">
         <h2 className="title">Rated services</h2>
-        <ServiceList services={services}/>
+        <ServiceList services={reviews}/>
       </div>
     </section>
   </div>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-static';
-import slug from 'slug';
 
-import { Service } from '../types';
+import { ValidReviewV1 } from '../types';
 import { Rating } from './Rating';
 
 interface Props {
-  service: Service;
+  domain: string;
+  service: ValidReviewV1;
   detailed?: boolean;
 }
 
@@ -19,17 +19,27 @@ export const ServiceSummary: React.SFC<Props> = (props) => {
             {renderTitle(props.service, props.detailed)}
           </div>
           <div className="level-item">
-            <Rating rating={props.service.class}/>
+            <Rating rating={props.service.rated}/>
           </div>
         </div>
-        <div className="level-right">{renderMetadata(props.service)}</div>
+        <div className="level-right">
+          <div className="level-item">
+            <a 
+              href={`http://${props.domain}`}
+              title={`Visit ${props.domain}`}
+              target="_blank"
+              className="button is-text"
+            >
+              {props.domain}
+            </a>
+          </div>
+        </div>
       </div>
-      {renderDocs(props.service)}
     </div>
   );
 }
 
-function renderTitle(service: Service, detailed?: boolean) {
+function renderTitle(service: ValidReviewV1, detailed?: boolean) {
   if (detailed) {
     return (
       <h2 className="title is-size-2">{service.name}</h2>
@@ -37,43 +47,20 @@ function renderTitle(service: Service, detailed?: boolean) {
   }
 
   return (
-    <h3 className="title is-size-5"><Link to={`/service/${service.id}/`}>{service.name}</Link></h3>
+    <h3 className="title is-size-5"><Link to={`/service/${service.slug}/`}>{service.name}</Link></h3>
   );
 }
 
-function renderMetadata(service: Service): React.ReactNodeArray {
-  const metadata: React.ReactNodeArray = [];
-
-  if (service.domains) {
-    service.domains.forEach((domain) => {
-      metadata.push((
-        <div key={domain} className="level-item">
-          <a 
-            href={`http://${domain}`}
-            title={`Visit ${domain}`}
-            target="_blank"
-            className="button is-text"
-          >
-            {domain}
-          </a>
-        </div>
-      ));
-    });
-  }
-
-  return metadata;
-}
-
-function renderDocs(service: Service): React.ReactNode {
-  const linksToDocs = Object.keys(service.docs).map((filename) => {
+function renderPoints(service: ValidReviewV1): React.ReactNode {
+  const linksToPoints = (service.points || []).map((point) => {
     return (
       <Link
-        key={filename}
-        to={`/service/${service.id}/#${slug(filename)}`}
-        title={`View ${filename} for ${service.name}`}
+        key={point.id}
+        to={`/service/${service.slug}/#${point.id}`}
+        title={`View ${point.title} about ${service.name}`}
         className="level-item button is-text"
       >
-        {filename}
+        {point.title}
       </Link>
     );
   });
@@ -81,7 +68,7 @@ function renderDocs(service: Service): React.ReactNode {
   return (
     <div className="level">
       <div className="level-left">
-        {linksToDocs}
+        {linksToPoints}
       </div>
     </div>
   );

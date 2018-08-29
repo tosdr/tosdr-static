@@ -1,8 +1,6 @@
-import axios from 'axios'
 import path from 'path'
-import fs from 'fs';
-import util from 'util';
 import Parser from 'rss-parser';
+import fetch from 'node-fetch';
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -17,14 +15,10 @@ export default {
     title: 'Terms of Service; Didn\'t Read',
   }),
   getRoutes: async () => {
-    const readdir = util.promisify(fs.readdir);
-    const readFile = util.promisify(fs.readFile);
-    // Note: we're assuming data/services to contain the API data, i.e. from here:
-    // https://github.com/tosdr/tosdr.org/tree/master/api/1/service/
-    const filenames = await readdir(path.resolve(__dirname, './data/v2/service'));
-    const jsonFilenames = filenames.filter(filename => filename.substr(-5) === '.json');
-    const files = await Promise.all(jsonFilenames.map(fileName => readFile(path.resolve(__dirname, './data/v2/service', fileName), 'utf8')));
-    const services = files.map(file => JSON.parse(file));
+    const response = await fetch('https://tosdr.org/api/1/all.json');
+    const reviews = await response.json();
+    delete reviews['tosdr/api/version'];
+    delete reviews['tosdr/data/version'];
 
     return [
       {
@@ -35,7 +29,7 @@ export default {
           const feed = await parser.parseURL('https://blog.tosdr.org/rss/');
 
           return {
-            services,
+            reviews,
             blog: feed,
           };
         },
@@ -60,13 +54,14 @@ export default {
         path: '/service',
         component: 'src/containers/ServiceOverview',
         getData: () => ({
-          services,
+          reviews,
         }),
-        children: services.map(service => ({
-          path: `/${service.id}`,
+        children: Object.entries(reviews).map(([key, review]) => ({
+          path: `/${review.slug}`,
           component: 'src/containers/Service',
           getData: () => ({
-            service,
+            domain: key.replace('tosdr/review/', '').trim(),
+            review,
           }),
         })),
       },

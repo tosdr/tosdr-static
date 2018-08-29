@@ -10,9 +10,9 @@
     "serve": "serve dist -p 3000"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "bulma": "^0.7.1",
     "detect-browser": "^2.5.1",
+    "node-fetch": "^2.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
@@ -22,7 +22,6 @@
     "slug": "^0.9.1"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
     "@types/detect-browser": "^2.0.1",
     "@types/node": "^9.4.7",
     "@types/react": "^16.0.40",

@@ -1,21 +1,21 @@
 import React from 'react'
 import { withRouteData } from 'react-static'
 
-import { Service } from '../types'
+import { Reviews } from '../types'
 import { ServiceList } from '../components/ServiceList';
 import Helmet from 'react-helmet';
 
 interface Props {
-  services: Service[]
+  reviews: Reviews;
 }
 
-export default withRouteData(({ services }: Props) => (
+export default withRouteData(({ reviews }: Props) => (
   <div>
     <Helmet>
       <title>
         Services · Terms of Service; Didn't Read
       </title>
     </Helmet>
-    <ServiceList services={services}/>
+    <ServiceList services={reviews}/>
   </div>
 ))

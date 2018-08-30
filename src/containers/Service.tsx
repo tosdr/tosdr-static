@@ -15,6 +15,11 @@ export default withRouteData(({ domain, review }: Props) => {
     return <span>This service is already reviewed elsewhere.</span>;
   }
 
+  const points = review.points
+    // List points with the highest weight ("score") first
+    ? review.points.sort((point1, point2) => point2.score - point1.score)
+    : [];
+
   return (
     <div>
       <header className="hero is-light">
@@ -29,7 +34,7 @@ export default withRouteData(({ domain, review }: Props) => {
           </div>
         </div>
       </header>
-      {review.points ? renderPoints(review.points) : null}
+      {renderPoints(points)}
     </div>
   )
 })

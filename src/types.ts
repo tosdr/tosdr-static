@@ -2,7 +2,7 @@ export type Reviews = ReviewsV1;
 export type Review = ReviewV1;
 
 export type Rating = false | 'A' | 'B' | 'C' | 'D' | 'E';
-export type PointScore = 'bad' | 'neutral' | 'good';
+export type PointScore = 'blocker' | 'bad' | 'neutral' | 'good';
 export type Weight = number;
 
 export interface RedirectReviewV1 {

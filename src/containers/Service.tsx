@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 
 import { Review, isRedirectReview, PointV1 } from '../types'
 import { ServiceSummary } from '../components/ServiceSummary';
+import { Classification } from '../components/Classification';
 
 interface Props {
   domain: string;
@@ -44,7 +45,16 @@ const renderPoints = (points: PointV1[]) => {
     return (
       <section key={point.id} id={point.id} className="section">
         <div className="container">
-          <h3 className="title">{point.title}</h3>
+          <div className="level">
+            <div className="level-left">
+              <div className="level-item">
+                <Classification classification={point.point}/>
+              </div>
+              <div className="level-item">
+                <h3 className="title">{point.title}</h3>
+              </div>
+            </div>
+          </div>
           <p>{point.description}</p>
         </div>
       </section>

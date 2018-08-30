@@ -54,6 +54,13 @@ const renderPoints = (points: PointV1[]) => {
                 <h3 className="title">{point.title}</h3>
               </div>
             </div>
+            <div className="level-right">
+              <a
+                href={point.discussion}
+                title="Do you agree with this analysis? Discuss it on our edit tool."
+                className="button is-text is-small"
+              >Discuss</a>
+            </div>
           </div>
           <p>{point.description}</p>
         </div>
